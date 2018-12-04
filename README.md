@@ -1,4 +1,4 @@
-# Codes Standards Instruction
+# Code Standards Instruction
 
 * In this repository you will find the standards for codes in Shenakth-Pajouh.
 
