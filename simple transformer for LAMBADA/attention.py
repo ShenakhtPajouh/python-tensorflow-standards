@@ -38,7 +38,7 @@ def simple_dot_attention(query, key, value, memory_length=None, memory_mask=None
         indices = tf.where(memory_mask)
         queries = tf.gather(query, indices[:, 0])
         keys = tf.boolean_mask(key, memory_mask)
-        attention_logits = tf.reduce_sum(queries, keys)
+        attention_logits = tf.reduce_sum(queries * keys)
         attention_logits = tf.scatter_nd(tf.where(memory_mask), attention_logits, [batch_size, seq_length])
         attention_logits = tf.where(memory_mask, attention_logits, tf.fill([batch_size, seq_length], -float("Inf")))
         attention_coefficients = tf.nn.softmax(attention_logits)
